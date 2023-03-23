@@ -29,21 +29,23 @@ class _BillState extends State<Bill> {
 
 
           leading: Container(
-            height: 70,
-            width: 70,
+            height: 50,
+            width: 50,
             decoration: const BoxDecoration(
               color: Colors.red,
               shape: BoxShape.circle,
             ),
             child: Center(child: Text("${_units}",style: TextStyle(color: Colors.white),)),),
-          title: Text(_id,style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold)),
-          subtitle: Text("${_validation}",style: TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+          title: Text(_id,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
           trailing: Text("${_amount} DZD",style: TextStyle(color: Colors.green)),
           backgroundColor: Colors.redAccent.withOpacity(0.5),
 
 
           children: [
-            Text("${_validation}",style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold)),
+            Text("entry date:${_validation}",style: TextStyle(color: Colors.black)),
+            Text("name:",style: TextStyle(color: Colors.black)),
+            Text("category:",style: TextStyle(color: Colors.black)),
+            Text("expiration:",style: TextStyle(color: Colors.black)),
 
 
           ],

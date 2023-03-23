@@ -37,7 +37,7 @@ class _AccountState extends State<Account> {
 
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8,top: 8),
                         child: Text(
                           "Store Account",
 
@@ -47,10 +47,7 @@ class _AccountState extends State<Account> {
                               fontSize: 40),
                         ),
                       ),
-                      Text(
-                        "${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().month}",
-                        style: TextStyle(color: Colors.black.withOpacity(0.8)),
-                      ),
+
                       Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: IconButton(

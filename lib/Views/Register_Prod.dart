@@ -12,7 +12,7 @@ class _RegisterProdState extends State<RegisterProd> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController dateInput = TextEditingController();
   int _qte = 30;
-  final _padding = const EdgeInsets.symmetric(horizontal: 40);
+  final _padding = const EdgeInsets.symmetric(horizontal: 10);
   final _filledColor = Colors.white.withOpacity(0.6);
   final _h = 50.0;
   final _formKey = GlobalKey<FormState>();
@@ -25,6 +25,14 @@ class _RegisterProdState extends State<RegisterProd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.redAccent,
+          title: Text("Log Product to Iventory!",
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6
+                  ?.copyWith(color: Colors.white)),
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton.extended(
           label: const Text(
@@ -74,29 +82,11 @@ class _RegisterProdState extends State<RegisterProd> {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 //heading
-                Container(
-                  child: Row(
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(Icons.arrow_back)),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Text("Log Product to Iventory!",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline4
-                                ?.copyWith(color: Colors.white)),
-                      ),
-                    ],
-                  ),
-                ),
+
 
                 //name
                 Padding(
@@ -127,7 +117,7 @@ class _RegisterProdState extends State<RegisterProd> {
                       //unit price
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           child: TextFormField(
                             onChanged: (name) => {},
                             textAlign: TextAlign.start,
@@ -147,7 +137,7 @@ class _RegisterProdState extends State<RegisterProd> {
                       //quantity
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           child: TextFormField(
                             controller: _controller,
                             onChanged: (name) => {},

@@ -27,92 +27,86 @@ class _CounterState extends State<Counter> {
         appBar: AppBar(
           backgroundColor: Colors.red,
           title: Text(
-            "Purchases list",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            "Purchase",
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
           actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextButton(
-                onPressed: () {},
-                onLongPress: () async {
-                  var response = await
-                  showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                              title: const Text('Cash in'),
-                              content:
-                                  const Text('Do you want to confirm purshase'),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(context, 'Cancel'),
-                                  child: const Text('Cancel',
-                                      style: TextStyle(color: Colors.black)),
+            TextButton(
+              onPressed: () {},
+              onLongPress: () async {
+                var response = await
+                showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Cash in'),
+                            content:
+                                const Text('Do you want to confirm purshase'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(context, 'Cancel'),
+                                child: const Text('Cancel',
+                                    style: TextStyle(color: Colors.black)),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, 'OK'),
+                                child: const Text(
+                                  'OK',
+                                  style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),
                                 ),
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context, 'OK'),
-                                  child: const Text(
-                                    'OK',
-                                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),
-                                  ),
-                                )
-                              ]));
-                  if(response=="OK"){
-                    setState(() {
-                      list = [];total = 0;
-                    });
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Added to account")));}
-                },
-                child: Text(
-                  "${total} DZD",
-                  style: TextStyle(
-                      color: Colors.greenAccent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
+                              )
+                            ]));
+                if(response=="OK"){
+                  setState(() {
+                    list = [];total = 0;
+                  });
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Added to account")));}
+              },
+              child: Text(
+                "${total} DZD",
+                style: TextStyle(
+                    color: Colors.greenAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: PopupMenuButton(
-                  onSelected: (value) {
-                    switch (value) {
-                      case 1:
-                        {
-                          // statements;
-                        }
-                        break;
+            PopupMenuButton(
+                onSelected: (value) {
+                  switch (value) {
+                    case 1:
+                      {
+                        // statements;
+                      }
+                      break;
 
-                      case 2:
-                        {
-                          //statements;
-                        }
-                        break;
+                    case 2:
+                      {
+                        //statements;
+                      }
+                      break;
 
-                      default:
-                        {
-                          //statements;
-                        }
-                        break;
-                    }
-                  },
-                  itemBuilder: (context) => [
-                        PopupMenuItem(
-                          value: 1,
-                          child: Text("bayd"),
-                        ),
-                        PopupMenuItem(
-                          value: 2,
-                          child: Text("Jirika maa"),
-                        ),
-                        PopupMenuItem(
-                          value: 3,
-                          child: Text("khobz"),
-                        ),
-                      ]),
-            ),
+                    default:
+                      {
+                        //statements;
+                      }
+                      break;
+                  }
+                },
+                itemBuilder: (context) => [
+                      PopupMenuItem(
+                        value: 1,
+                        child: Text("bayd"),
+                      ),
+                      PopupMenuItem(
+                        value: 2,
+                        child: Text("Jirika maa"),
+                      ),
+                      PopupMenuItem(
+                        value: 3,
+                        child: Text("khobz"),
+                      ),
+                    ]),
           ],
         ),
         body: ListView.separated(
