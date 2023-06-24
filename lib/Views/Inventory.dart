@@ -1,5 +1,5 @@
 import 'package:cashier/Views/Register_Prod.dart';
-import 'package:cashier/Views/utils/bill.dart';
+import 'package:cashier/Views/utils/stockProduct.dart';
 import 'package:cashier/Views/search.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +11,8 @@ class Inventory extends StatefulWidget {
 }
 
 class _InventoryState extends State<Inventory> {
-  List<Bill> list= [
-    Bill()
+  List<stockProduct> list= [
+    stockProduct()
   ];
   @override
   Widget build(BuildContext context) {

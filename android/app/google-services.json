@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "920633234384",
+    "project_id": "cashier-aeaf1",
+    "storage_bucket": "cashier-aeaf1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920633234384:android:edc929bcab85260b84dfd5",
+        "android_client_info": {
+          "package_name": "com.example.cashier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920633234384-pbm6t0ec1vtfrcpvc6nq86tlgk6kld0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cashier",
+            "certificate_hash": "3c4ccfa1810703aa24315cf40bc1018e7ec011f2"
+          }
+        },
+        {
+          "client_id": "920633234384-l3mgjei6a97p14c9if2jrg76clnf3d3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiNurpB9K_xgYTSSNI1n8E8ZOppvUfkMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920633234384-l3mgjei6a97p14c9if2jrg76clnf3d3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

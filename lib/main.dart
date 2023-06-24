@@ -1,6 +1,4 @@
-import 'package:cashier/Views/Account.dart';
-import 'package:cashier/Views/Register_Prod.dart';
-import 'package:cashier/Views/splash.dart';
+
 import 'package:flutter/material.dart';
 
 import 'Views/Dash.dart';
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Cashier',
-      home: SplashScreen(),
+      home: Dash(),
     );
   }
 }

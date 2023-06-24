@@ -26,29 +26,24 @@ class _DashState extends State<Dash> {
         ],
       ),
       backgroundColor: Colors.redAccent,
-      bottomNavigationBar: Container(
-        height: 80,
-        color: Colors.red,
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: GNav(
-            selectedIndex: _current,
-            onTabChange: (index)=> setState(() {
-              _current = index;
-            }),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: GNav(
+          iconSize: 20,
+          selectedIndex: _current,
+          onTabChange: (index)=> setState(() {
+            _current = index;
+          }),
 
-             gap: 10,
-              backgroundColor: Colors.red,
-              color: Colors.white,
-              activeColor: Colors.white,
-              tabBackgroundColor: Colors.red.shade300,
-              duration: Duration(milliseconds: 300),
-              tabs: [
-                GButton(icon: Icons.add_card,text: "Counter",),
-                GButton(icon: Icons.account_balance,text: "Stock",),
-                GButton(icon: Icons.account_balance_wallet_outlined,text: "Account",),
-              ]),
-        ),
+            backgroundColor: Colors.red,
+            color: Colors.white,
+            activeColor: Colors.white,
+            tabBackgroundColor: Colors.red.shade300,
+            tabs: [
+              GButton(icon: Icons.add_shopping_cart,text: "Counter",),
+              GButton(icon: Icons.account_balance,text: "Stock",),
+              GButton(icon: Icons.account_balance_wallet_outlined,text: "Account",),
+            ]),
       ),
     );
   }

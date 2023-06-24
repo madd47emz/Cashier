@@ -1,5 +1,6 @@
 import 'package:cashier/Views/utils/counterProduct.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 class Counter extends StatefulWidget {
   const Counter({Key? key}) : super(key: key);
@@ -14,28 +15,12 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          label: const Text('Scan barcode'),
-          icon: Icon(Icons.add),
-          backgroundColor: Colors.redAccent,
-          onPressed: () {
-            setState(() {
-              list.add(CounterProduct());
-            });
-          },
-        ),
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: Text(
-            "Purchase",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {},
-              onLongPress: () async {
-                var response = await
-                showDialog<String>(
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton.extended(
+              onPressed: () async {
+                var response = await showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
                             title: const Text('Cash in'),
@@ -52,25 +37,57 @@ class _CounterState extends State<Counter> {
                                 onPressed: () => Navigator.pop(context, 'OK'),
                                 child: const Text(
                                   'OK',
-                                  style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               )
                             ]));
-                if(response=="OK"){
+                if (response == "OK") {
                   setState(() {
-                    list = [];total = 0;
+                    list = [];
+                    total = 0;
                   });
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Added to account")));}
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Added to account"),backgroundColor: Colors.red,));
+                }
               },
-              child: Text(
+              label: Text(
                 "${total} DZD",
                 style: TextStyle(
-                    color: Colors.greenAccent,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                  color: Colors.white,
+                ),
               ),
+              backgroundColor: Colors.green,
             ),
+            SizedBox(
+              width: 5,
+            ),
+            FloatingActionButton(
+              child: Icon(Icons.add),
+              backgroundColor: Colors.redAccent,
+              onPressed: () async {
+                var res = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SimpleBarcodeScannerPage(),
+                    ));
+                setState(() {
+                  if (res is String) {
+                    setState(() {});
+                  }
+                });
+              },
+            ),
+          ],
+        ),
+        appBar: AppBar(
+          backgroundColor: Colors.red,
+          title: Text(
+            "Counter",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          actions: [
             PopupMenuButton(
                 onSelected: (value) {
                   switch (value) {
@@ -109,13 +126,11 @@ class _CounterState extends State<Counter> {
                     ]),
           ],
         ),
-        body: ListView.separated(
+        body: ListView.builder(
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
             return list[index];
           },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
           itemCount: list.length,
         ));
   }

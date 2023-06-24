@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 class RegisterProd extends StatefulWidget {
   const RegisterProd({Key? key}) : super(key: key);
@@ -11,14 +12,16 @@ class RegisterProd extends StatefulWidget {
 class _RegisterProdState extends State<RegisterProd> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController dateInput = TextEditingController();
+  final TextEditingController barcodeInput = TextEditingController();
   int _qte = 30;
   final _padding = const EdgeInsets.symmetric(horizontal: 10);
-  final _filledColor = Colors.white.withOpacity(0.6);
+  final _filledColor = Colors.white;
   final _h = 50.0;
   final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
-    dateInput.text = "expiration date"; //set the initial value of text field
+    dateInput.text = "";
+    barcodeInput.text = "";
     super.initState();
   }
 
@@ -26,26 +29,23 @@ class _RegisterProdState extends State<RegisterProd> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.redAccent,
-          title: Text("Log Product to Iventory!",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  ?.copyWith(color: Colors.white)),
+          backgroundColor: Colors.red,
+          title: Text(
+            "Register Product",
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton.extended(
-          label: const Text(
-            'Scan barcode',
-            style: TextStyle(color: Colors.red),
-          ),
-          icon: const Icon(
-            Icons.add,
-            color: Colors.red,
-          ),
-          backgroundColor: Colors.white,
-          onPressed: () {
-            () async {
+            label: const Text(
+              'Register',
+              style: TextStyle(color: Colors.red),
+            ),
+            icon: const Icon(
+              Icons.add,
+              color: Colors.red,
+            ),
+            backgroundColor: Colors.white,
+            onPressed: () async {
               var response = await showDialog<String>(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
@@ -70,12 +70,11 @@ class _RegisterProdState extends State<RegisterProd> {
               if (response == "OK") {
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text("Added to Inventory")));
+                Navigator.pop(context);
               }
-            };
-          },
-        ),
+            }),
         body: Container(
-          color: Colors.redAccent,
+          color: Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Form(
@@ -86,7 +85,6 @@ class _RegisterProdState extends State<RegisterProd> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 //heading
-
 
                 //name
                 Padding(
@@ -103,12 +101,13 @@ class _RegisterProdState extends State<RegisterProd> {
                         hintStyle: TextStyle(color: Colors.red),
                         filled: true,
                         enabled: true,
+                        hintText: "Name",
                         fillColor: _filledColor,
-                        hintText: 'Product Name',
                       ),
                     ),
                   ),
                 ),
+                //quantity + unit price
                 Container(
                   height: _h,
                   child: Row(
@@ -158,8 +157,7 @@ class _RegisterProdState extends State<RegisterProd> {
                     ],
                   ),
                 ),
-                // //quantity
-
+                //quantity slider
                 Container(
                   height: _h,
                   child: Row(
@@ -175,16 +173,16 @@ class _RegisterProdState extends State<RegisterProd> {
                       ),
                       Slider(
                           value: _qte.toDouble(),
-                          min: 1.0,
+                          min: 1,
                           max: 150,
                           divisions: 10,
                           activeColor: Colors.white,
                           inactiveColor: Colors.white.withOpacity(0.8),
-                          label: '${_qte}',
+                          label: '${_qte.toInt()}',
                           onChanged: (double newValue) {
                             setState(() {
                               _qte = newValue.toInt();
-                              _controller.text = newValue.toString();
+                              _controller.text = _qte.toString();
                             });
                           },
                           semanticFormatterCallback: (double newValue) {
@@ -193,26 +191,45 @@ class _RegisterProdState extends State<RegisterProd> {
                     ],
                   ),
                 ),
-
-                //Experation date
+                //barcode scanner
                 Padding(
                   padding: _padding,
                   child: Container(
                     height: _h,
                     child: TextFormField(
-                      initialValue: "bar code",
+                      controller: barcodeInput,
                       readOnly: true,
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.red),
                       cursorColor: Colors.red,
                       decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.document_scanner,
+                          color: Colors.red,
+                        ),
                         hintStyle: TextStyle(color: Colors.red),
+                        hintText: "bar code",
                         filled: true,
-                        fillColor: _filledColor.withOpacity(0.6),
+                        fillColor: _filledColor,
                       ),
+                      onTap: () async {
+                        var res = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const SimpleBarcodeScannerPage(),
+                            ));
+                        setState(() {
+                          if (res is String) {
+                            barcodeInput.text = res;
+                            setState(() {});
+                          }
+                        });
+                      },
                     ),
                   ),
                 ),
+                //expitation date
                 Padding(
                   padding: _padding,
                   child: Container(
@@ -229,8 +246,9 @@ class _RegisterProdState extends State<RegisterProd> {
                           color: Colors.red,
                         ),
                         hintStyle: TextStyle(color: Colors.red),
+                        hintText: "experation",
                         filled: true,
-                        fillColor: _filledColor.withOpacity(0.6),
+                        fillColor: _filledColor,
                       ),
                       onTap: () async {
                         DateTime? pickedDate = await showDatePicker(

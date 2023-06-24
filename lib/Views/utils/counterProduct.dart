@@ -51,7 +51,7 @@ class _CounterProductState extends State<CounterProduct> {
                 ),
               ),
             ),
-            Text(_name,style: TextStyle(color: Colors.black,fontSize:20,fontWeight: FontWeight.bold)),
+            Text(_name,style: TextStyle(color: Colors.black,fontSize: 20)),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text("${_price} DZD",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold)),
