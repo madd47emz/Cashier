@@ -1,6 +1,7 @@
 import 'package:cashier/Views/Register_Prod.dart';
 import 'package:cashier/Views/utils/stockProduct.dart';
 import 'package:cashier/Views/search.dart';
+import 'package:cashier/firebase/ProductModel.dart';
 import 'package:flutter/material.dart';
 
 class Inventory extends StatefulWidget {
@@ -12,7 +13,17 @@ class Inventory extends StatefulWidget {
 
 class _InventoryState extends State<Inventory> {
   List<stockProduct> list= [
-    stockProduct()
+    stockProduct(product:Product(quantity: 100,id: "50045600546",name: "Product 1",description: "dufhgiudfhgiudfhgdfgdfg",price: 200,created: DateTime(2023,6,8),expiration: DateTime(2023,6,8)))
+  ];
+  List<String> searchTerms = [
+    "Apple",
+    "Banana",
+    "Mango",
+    "Pear",
+    "Watermelons",
+    "Blueberries",
+    "Pineapples",
+    "Strawberries"
   ];
   @override
   Widget build(BuildContext context) {
@@ -20,7 +31,7 @@ class _InventoryState extends State<Inventory> {
         floatingActionButton: FloatingActionButton.extended(
           label: const Text('Create Product'),
           icon: Icon(Icons.add),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.red,
           onPressed: () {
             Navigator.push(
               context,
@@ -38,7 +49,7 @@ class _InventoryState extends State<Inventory> {
                 onPressed: () {
                   showSearch(
                       context: context,
-                      delegate: CustomSearchDelegate()
+                      delegate: CustomSearchDelegate(searchTerms),
                   );
                 },
                 icon: const Icon(Icons.search),

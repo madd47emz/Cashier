@@ -26,7 +26,7 @@ class AccountCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(child: Text(title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: mainFontsize,color: Colors.red),)),
-                Center(child: Text(sub,style: TextStyle(color: Colors.red.withOpacity(0.7),fontSize: mainFontsize*0.75,),)),
+                Center(child: Text(sub,style: TextStyle(color: Colors.black,fontSize: mainFontsize*0.8,),)),
               ],
             ),
           ),

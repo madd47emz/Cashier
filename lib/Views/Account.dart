@@ -56,11 +56,13 @@ class _AccountState extends State<Account> {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.redAccent,
+                      color: Colors.red,
                       borderRadius: BorderRadius.circular(8)),
                   height: 250,
                   width: double.infinity,
-                  child: SfCartesianChart(),
+                  child: SfCartesianChart(
+
+                  ),
                 )),
             //split
             Padding(
@@ -82,12 +84,7 @@ class _AccountState extends State<Account> {
               ),
             ),
             //bills list
-            stockProduct(),
-            stockProduct(),
-            stockProduct(),
-            stockProduct(),
-            stockProduct(),
-            stockProduct(),
+
           ],
         )));
   }

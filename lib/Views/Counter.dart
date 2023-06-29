@@ -56,6 +56,7 @@ class _CounterState extends State<Counter> {
                 "${total} DZD",
                 style: TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.bold
                 ),
               ),
               backgroundColor: Colors.green,
@@ -65,7 +66,7 @@ class _CounterState extends State<Counter> {
             ),
             FloatingActionButton(
               child: Icon(Icons.add),
-              backgroundColor: Colors.redAccent,
+              backgroundColor: Colors.red,
               onPressed: () async {
                 var res = await Navigator.push(
                     context,

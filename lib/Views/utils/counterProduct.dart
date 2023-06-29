@@ -21,44 +21,40 @@ class _CounterProductState extends State<CounterProduct> {
           borderRadius: BorderRadius.circular(15),
 
         ),
-        elevation: 16,
-        shadowColor: Colors.black,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-              child: GestureDetector(
-                onTap: (){
-                  setState(() {
-                    _units++;
-                  });
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.5),
+        child: ListTile(
+          leading:
+            GestureDetector(
+              onTap: (){
+                setState(() {
+                  _units++;
+                });
       },
-                onDoubleTap: (){
-                  setState(() {
-                    _units != 0 ? _units--:_units = 1;
-                  });
-                },
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(child: Text("${_units}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
-
+              onDoubleTap: (){
+                setState(() {
+                  _units != 0 ? _units--:_units = 1;
+                });
+              },
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
                 ),
+                child: Center(child: Text("${_units}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+
               ),
             ),
-            Text(_name,style: TextStyle(color: Colors.black,fontSize: 20)),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text("${_price} DZD",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold)),
-            )
+            title:
+            Text(_name,style: TextStyle(color: Colors.black)),
+            trailing:
+
+            Text("${_price} DZD",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold))
 
 
-          ],
+
         ),
       ),
     );

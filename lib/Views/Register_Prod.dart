@@ -1,3 +1,4 @@
+import 'package:cashier/firebase/ProductRepo.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
@@ -10,6 +11,7 @@ class RegisterProd extends StatefulWidget {
 }
 
 class _RegisterProdState extends State<RegisterProd> {
+  final productRepo repo = productRepo();
   final TextEditingController _controller = TextEditingController();
   final TextEditingController dateInput = TextEditingController();
   final TextEditingController barcodeInput = TextEditingController();
@@ -68,8 +70,9 @@ class _RegisterProdState extends State<RegisterProd> {
                             )
                           ]));
               if (response == "OK") {
+               // await repo.createProduct();
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Added to Inventory")));
+                    SnackBar(content: Text(repo.message)));
                 Navigator.pop(context);
               }
             }),
@@ -92,7 +95,7 @@ class _RegisterProdState extends State<RegisterProd> {
                   child: Container(
                     height: _h,
                     child: TextFormField(
-                      onChanged: (name) => {},
+
                       textAlign: TextAlign.start,
                       keyboardType: TextInputType.name,
                       style: TextStyle(color: Colors.red),
@@ -118,7 +121,6 @@ class _RegisterProdState extends State<RegisterProd> {
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           child: TextFormField(
-                            onChanged: (name) => {},
                             textAlign: TextAlign.start,
                             keyboardType: TextInputType.number,
                             style: TextStyle(color: Colors.red),
@@ -139,7 +141,6 @@ class _RegisterProdState extends State<RegisterProd> {
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           child: TextFormField(
                             controller: _controller,
-                            onChanged: (name) => {},
                             textAlign: TextAlign.start,
                             keyboardType: TextInputType.number,
                             style: TextStyle(color: Colors.red),

@@ -2,19 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
 // Demo list to show querying
-  List<String> searchTerms = [
-    "Apple",
-    "Banana",
-    "Mango",
-    "Pear",
-    "Watermelons",
-    "Blueberries",
-    "Pineapples",
-    "Strawberries"
-  ];
+  List<String> searchTerms;
 
 
-// clear the search text
+  CustomSearchDelegate(this.searchTerms); // clear the search text
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -53,7 +44,8 @@ class CustomSearchDelegate extends SearchDelegate {
         var result = matchQuery[index];
         return ListTile(
           textColor: Colors.white,
-          tileColor: Colors.redAccent,
+          tileColor: Colors.red,
+          leading: SizedBox(width: 40,),
           title: Text(result),
         );
       },
@@ -74,8 +66,9 @@ class CustomSearchDelegate extends SearchDelegate {
       itemBuilder: (context, index) {
         var result = matchQuery[index];
         return ListTile(
+          leading: SizedBox(width: 40,),
           textColor: Colors.white,
-          tileColor: Colors.redAccent,
+          tileColor: Colors.red,
           title: Text(result),
         );
       },
