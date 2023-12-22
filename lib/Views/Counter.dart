@@ -1,4 +1,6 @@
 import 'package:cashier/Views/utils/counterProduct.dart';
+import 'package:cashier/firebase/ProductModel.dart';
+import 'package:cashier/firebase/ProductRepo.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
@@ -10,8 +12,8 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
-  double total = 100;
-  List<CounterProduct> list = [CounterProduct()];
+  double total = 0;
+  static List<CounterProduct> list = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,11 +75,15 @@ class _CounterState extends State<Counter> {
                     MaterialPageRoute(
                       builder: (context) => const SimpleBarcodeScannerPage(),
                     ));
-                setState(() {
+
                   if (res is String) {
-                    setState(() {});
+                    productRepo repo = productRepo();
+                    var product = await repo.getProductByCode(res);
+                    list.add(CounterProduct(name: product.name,price: product.price,));
+                    setState(() {
+                    });
                   }
-                });
+
               },
             ),
           ],
@@ -127,12 +133,18 @@ class _CounterState extends State<Counter> {
                     ]),
           ],
         ),
-        body: ListView.builder(
+        body: list.isNotEmpty?
+        ListView.builder(
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
             return list[index];
           },
           itemCount: list.length,
-        ));
+        ):Center(
+          child: Text("Cash the cart!!",
+              style: TextStyle(
+                color: Colors.black.withOpacity(0.7),fontSize: 15,)),
+        )
+    );
   }
 }

@@ -1,3 +1,6 @@
+
+
+import 'package:cashier/firebase/ProductModel.dart';
 import 'package:cashier/firebase/ProductRepo.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -15,11 +18,16 @@ class _RegisterProdState extends State<RegisterProd> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController dateInput = TextEditingController();
   final TextEditingController barcodeInput = TextEditingController();
+  String _name = '';
   int _qte = 30;
   final _padding = const EdgeInsets.symmetric(horizontal: 10);
   final _filledColor = Colors.white;
   final _h = 50.0;
   final _formKey = GlobalKey<FormState>();
+
+  DateTime _experation = DateTime(2023);
+
+  double _price = 0;
   @override
   void initState() {
     dateInput.text = "";
@@ -70,9 +78,17 @@ class _RegisterProdState extends State<RegisterProd> {
                             )
                           ]));
               if (response == "OK") {
-               // await repo.createProduct();
+                showDialog(
+                  context: context,
+                  builder: (context) => const Center(
+                    child: CircularProgressIndicator(
+                        color: Colors.white),
+                  ),
+                );
+                await repo.createProduct(Product(id: barcodeInput.text, name: _name, price: _price, description: "no discription is here", quantity: _qte, expiration: _experation, created: DateTime.now()));
+                Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(repo.message)));
+                    SnackBar(content: Text(repo.message),backgroundColor: Colors.red,duration: Duration(seconds: 5),));
                 Navigator.pop(context);
               }
             }),
@@ -100,6 +116,7 @@ class _RegisterProdState extends State<RegisterProd> {
                       keyboardType: TextInputType.name,
                       style: TextStyle(color: Colors.red),
                       cursorColor: Colors.red,
+                      onChanged: (value)=>_name=value,
                       decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.red),
                         filled: true,
@@ -121,6 +138,7 @@ class _RegisterProdState extends State<RegisterProd> {
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           child: TextFormField(
+                            onChanged: (value)=>_price=double.parse(value),
                             textAlign: TextAlign.start,
                             keyboardType: TextInputType.number,
                             style: TextStyle(color: Colors.red),
@@ -256,15 +274,14 @@ class _RegisterProdState extends State<RegisterProd> {
                             context: context,
                             initialDate: DateTime.now(),
                             firstDate: DateTime(1950),
-                            //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2100));
 
                         if (pickedDate != null) {
-                          //pickedDate output format => 2021-03-10 00:00:00.000
+                          _experation = pickedDate;
                           String formattedDate =
                               DateFormat('yyyy-MM-dd').format(pickedDate);
                           print(
-                              formattedDate); //formatted date output using intl package =>  2021-03-16
+                              formattedDate);
                           setState(() {
                             dateInput.text =
                                 formattedDate; //set output date to TextField value.

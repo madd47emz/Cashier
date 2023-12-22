@@ -33,7 +33,7 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
 
   brightness: Brightness.dark,
-  accentColor: Colors.white,
+  //accentColor: Colors.white,
   switchTheme: SwitchThemeData(
     trackColor: MaterialStateProperty.all<Color>(Colors.grey),
     thumbColor: MaterialStateProperty.all<Color>(Colors.white),

@@ -23,7 +23,7 @@ class Bill {
 
     return Bill(
       id: json['id'],
-      date: DateTime.parse(json['date']),
+      date: json['date'].toDate(),
       products: products,
       total: json['total'],
     );

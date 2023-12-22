@@ -27,8 +27,8 @@ class Product {
       price: json['price'],
       description: json['description'],
       quantity: json['quantity'],
-      expiration: DateTime.parse(json['expiration']),
-      created: DateTime.parse(json['created']),
+      expiration: json['expiration'].toDate(),
+      created: json['created'].toDate(),
     );
   }
 

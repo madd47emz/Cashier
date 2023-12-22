@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CounterProduct extends StatefulWidget {
-  const CounterProduct({Key? key}) : super(key: key);
+  final String name;
+  final double price;
+  int units = 1;
+  CounterProduct({Key? key, required this.name, required this.price}) : super(key: key);
 
   @override
   State<CounterProduct> createState() => _CounterProductState();
 }
 
 class _CounterProductState extends State<CounterProduct> {
-  var _name = "Product 1";
-  double _price = 100;
-
-  int _units = 1;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,12 +27,13 @@ class _CounterProductState extends State<CounterProduct> {
             GestureDetector(
               onTap: (){
                 setState(() {
-                  _units++;
+                  this.widget.units++;
+
                 });
       },
               onDoubleTap: (){
                 setState(() {
-                  _units != 0 ? _units--:_units = 1;
+                  this.widget.units > 0 ? this.widget.units--:this.widget.units = 1;
                 });
               },
               child: Container(
@@ -43,15 +43,15 @@ class _CounterProductState extends State<CounterProduct> {
                   color: Colors.red,
                   shape: BoxShape.circle,
                 ),
-                child: Center(child: Text("${_units}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                child: Center(child: Text("${this.widget.units}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
 
               ),
             ),
             title:
-            Text(_name,style: TextStyle(color: Colors.black)),
+            Text(this.widget.name,style: TextStyle(color: Colors.black)),
             trailing:
 
-            Text("${_price} DZD",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold))
+            Text("${this.widget.price} DZD",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold))
 
 
 

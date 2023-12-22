@@ -16,10 +16,11 @@ class productRepo{
     final product = Product.fromSnapshot(snapshot.docs.first);
     return product;
   }
-  Future<List<Product>> getAll()async {
-    final snapshot = await _db.collection("products").get();
-    final products = snapshot.docs.map((e) => Product.fromSnapshot(e)).toList();
-      return products;
+  Future<QuerySnapshot<Map<String, dynamic>>> getAll()async {
+    return await _db.collection("products").get();
+    // final products = snapshot.docs.map((e) => Product.fromSnapshot(e)).toList();
+    // print(products);
+    //   return products;
 
   }
 
