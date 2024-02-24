@@ -1,4 +1,4 @@
-![photo_2024-02-24_18-51-30](https://github.com/madd47emz/Cashier/assets/59306831/19ca2c58-ee89-4104-82e7-cf7c778d63df)
+
 ![photo_2024-02-24_18-51-20](https://github.com/madd47emz/Cashier/assets/59306831/e4a31ceb-87e5-40d4-be05-fae5586d3c7a)
 
 ![photo_2024-02-24_18-51-22](https://github.com/madd47emz/Cashier/assets/59306831/cd0e81f3-b473-4a25-b287-b6bcd9a6fb20)
@@ -12,6 +12,7 @@
 
 ![photo_2024-02-24_18-51-30](https://github.com/madd47emz/Cashier/assets/59306831/7d946145-17db-4898-bf8c-211d5b2f4336)
 ![photo_2024-02-24_18-51-25](https://github.com/madd47emz/Cashier/assets/59306831/5fa33509-7b6b-4a05-b8ed-b4b79d6f45d9)
+![photo_2024-02-24_18-51-30](https://github.com/madd47emz/Cashier/assets/59306831/19ca2c58-ee89-4104-82e7-cf7c778d63df)
 ![photo_2024-02-24_18-51-28](https://github.com/madd47emz/Cashier/assets/59306831/d8fadd8a-37ae-4cd9-b185-b32d9a533f71)
 
 
