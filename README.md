@@ -1,6 +1,11 @@
-![photo_2024-02-24_18-51-20](https://github.com/madd47emz/Cashier/assets/59306831/e4a31ceb-87e5-40d4-be05-fae5586d3c7a) ![photo_2024-02-24_18-51-22](https://github.com/madd47emz/Cashier/assets/59306831/cd0e81f3-b473-4a25-b287-b6bcd9a6fb20)
+| Screenshot 1 | Screenshot 2 | Screenshot 3 |
+|--------------|--------------|--------------|
+| ![photo_2024-02-24_18-51-20](https://github.com/madd47emz/Cashier/assets/59306831/e4a31ceb-87e5-40d4-be05-fae5586d3c7a) | ![photo_2024-02-24_18-51-22](https://github.com/madd47emz/Cashier/assets/59306831/cd0e81f3-b473-4a25-b287-b6bcd9a6fb20) | ![photo_2024-02-24_18-51-33](https://github.com/madd47emz/Cashier/assets/59306831/d13e693c-b680-4cce-9bf6-005d15d960dc) |
+
+
+ 
   
-![photo_2024-02-24_18-51-33](https://github.com/madd47emz/Cashier/assets/59306831/d13e693c-b680-4cce-9bf6-005d15d960dc)
+
 ![photo_2024-02-24_18-51-32](https://github.com/madd47emz/Cashier/assets/59306831/f2069a90-99cd-43ff-9339-1cc1038b66f4)
 ![photo_2024-02-24_18-51-26](https://github.com/madd47emz/Cashier/assets/59306831/eb58d883-dd9b-4fdd-9073-923b1ef042d2)
 
